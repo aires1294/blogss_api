@@ -1,14 +1,14 @@
 export interface IUser {
-  id?: number;
+  id: number;
   username: string;
   vocation: string;
   level: number;
   password?: string;
 }
   
-export interface IToken {
-  id: number;
-  username: string;
-  vocation?: string;
-  level?: number;
-}
+// export interface IToken {
+//   id: number;
+//   username: string;
+//   vocation?: string;
+//   level?: number;
+// }
