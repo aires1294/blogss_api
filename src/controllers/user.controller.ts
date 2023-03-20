@@ -15,7 +15,7 @@ class UserController {
     const newProduct = await this.userService.createUser(product);
     console.log('flamengo', newProduct);
     
-    res.status(201).json(newProduct);
+    res.status(201).json({ token: newProduct });
   };
 }
 
