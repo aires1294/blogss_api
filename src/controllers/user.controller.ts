@@ -20,10 +20,13 @@ class UserController {
 
   public validateLogin = async (req: Request, res: Response) => {
     const login = req.body;
-    const validLogin = await this.userService.validateLogin(login);
-    console.log('flamengo', validLogin);
-    
-    res.status(200).json({ token: validLogin });
+    try {
+      const validLogin = await this.userService.validateLogin(login);
+      // console.log('flamengo', validLogin);
+      res.status(200).json({ token: validLogin });
+    } catch (e) {
+      res.status(401).json({ message: 'Username or password invalid' });
+    }
   };
 }
 
