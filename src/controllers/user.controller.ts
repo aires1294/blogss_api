@@ -17,6 +17,14 @@ class UserController {
     
     res.status(201).json({ token: newProduct });
   };
+
+  public validateLogin = async (req: Request, res: Response) => {
+    const login = req.body;
+    const validLogin = await this.userService.validateLogin(login);
+    console.log('flamengo', validLogin);
+    
+    res.status(200).json({ token: validLogin });
+  };
 }
 
 export default UserController;

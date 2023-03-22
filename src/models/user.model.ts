@@ -24,8 +24,8 @@ export default class UserModel {
       'SELECT * FROM Trybesmith.users WHERE username = ?',  
       [username],
     );
-    return rows;
-    // const [iUser] = rows as IUser[];
-    // return iUser;
+    // return rows;
+    const [iUser] = rows as IUser[];
+    return iUser;
   }
 }
