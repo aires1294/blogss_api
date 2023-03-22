@@ -18,11 +18,11 @@ export default class UserModel {
   }
 
   async validateLogin(login: ILogin): Promise<IUser> {
-    const { username } = login;
+    const { username, password } = login;
 
     const [rows] = await this.connection.execute<IUser[] & RowDataPacket[]>(
-      'SELECT * FROM Trybesmith.users WHERE username = ?',  
-      [username],
+      'SELECT * FROM Trybesmith.users WHERE username = ? AND password = ?',  
+      [username, password],
     );
     // return rows;
     const [iUser] = rows as IUser[];

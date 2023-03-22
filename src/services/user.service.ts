@@ -22,10 +22,12 @@ class UserService {
 
   public async validateLogin(login: ILogin): Promise<string> {
     const result = await this.model.validateLogin(login);
-    if (!result) {
+    
+    const { username, password } = result;
+    console.log('aquiii', result.password);
+    if (!result.username || !result.password) {
       throw new HttpException(401, 'Username or password invalid');
     }
-    const { username, password } = result;
     const codify: ILogin = { username, password };
     const token = jwt.sign({ codify }, secret, jwtConfig);
     return token;
